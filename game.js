@@ -1239,6 +1239,21 @@ btnSoundToggle.addEventListener('click', () => {
   btnSoundToggle.innerText = audio.enabled ? '🔊 音效: 開' : '🔇 音效: 關';
 });
 
+const btnShare = document.getElementById('btn-share');
+if (btnShare) {
+  btnShare.addEventListener('click', () => {
+    const gameUrl = 'https://yahui236236.github.io/gemini3.6/';
+    navigator.clipboard.writeText(gameUrl).then(() => {
+      btnShare.innerText = '✅ 已複製連結！快傳給同學！';
+      setTimeout(() => {
+        btnShare.innerText = '🔗 複製遊戲連結傳給同學 [SHARE]';
+      }, 2500);
+    }).catch(() => {
+      alert(`遊戲連結為：${gameUrl}`);
+    });
+  });
+}
+
 // Mobile Controls
 let mobileTouchDir = { x: 0, y: 0 };
 let mobileFiring = false;
